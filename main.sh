@@ -133,6 +133,7 @@ read
 clear
 
 #BOOTLAYOUT choice
+pacman -Sy parted
 echo Which bootlayout do you want?
 echo "1: UEFI with GPT
 2: BIOS with MBR"
@@ -205,4 +206,4 @@ rm /mnt/*.txt
 rm /mnt/chroot.sh
 echo Press enter to shutdown ctrl-c for cancel the shutdown and do manual changes
 read
-shutdown now
+poweroff -pf
