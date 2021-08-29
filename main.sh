@@ -198,6 +198,8 @@ echo $DISK >/mnt/disk.txt
 echo $BOOTLAYOUT >/mnt/bootlayout.txt
 echo $EFI >/mnt/efi.txt
 cp chroot.sh /mnt/chroot.sh
+cp pacman.conf /mnt/etc/
+cp mirrorlist-arch /mnt/etc/pacman.d/
 clear
 artix-chroot /mnt ./chroot.sh
 
