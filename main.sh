@@ -127,6 +127,7 @@ biosRootFunktion() {
 ###############################################################################
 
 #nice startup
+clear
 cat heading.txt
 echo press enter to continue or ctrl-c to cancel
 read
