@@ -18,6 +18,7 @@ mount /dev/sda2 /mnt
 mkdir /mnt/efi
 mount /dev/sda1 /efi
 
+fstabgen -U /mnt >> /mnt/etc/fstab
 #installation
 basestrap /mnt base base-devel openrc elogind-openrc
 basestrap /mnt linux linux-firmware
