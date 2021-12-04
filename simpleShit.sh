@@ -24,4 +24,8 @@ basestrap /mnt base base-devel openrc elogind-openrc
 basestrap /mnt linux linux-firmware
 
 cp chrootShit.sh /mnt
+cp mirrorlist-arch /etc/pacman.d/mirrorlist-arch
+
 artix-chroot /mnt ./chrootShit.sh
+
+poweroff
