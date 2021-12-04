@@ -22,3 +22,5 @@ mount /dev/sda1 /efi
 basestrap /mnt base base-devel openrc elogind-openrc
 basestrap /mnt linux linux-firmware
 
+cp chrootShit.sh /mnt
+arch-chroot /mnt
