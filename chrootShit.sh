@@ -1,5 +1,4 @@
 #chroot
-artix-chroot /mnt
 ln -sf /usr/share/zoneinfo/Europe/Vienna /etc/localtime
 hwclock --systohc
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
