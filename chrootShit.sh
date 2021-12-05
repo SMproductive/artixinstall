@@ -11,9 +11,11 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 pacman -Sy grub efibootmgr --noconfirm
 grub-install --target=x86_64-efi --efi-directory=efi --removable
 grub-mkconfig -o /boot/grub/grub.cfg
+clear
 
 #networking
-HOSTNAME=anonym
+echo Enter hostname:
+read HOSTNAME
 echo $HOSTNAME >/etc/hostname
 echo -e "127.0.0.1 \tlocalhost \n::1 \t\tlocalhost \n127.0.1.1 \t$HOSTNAME.localdomain $HOSTNAME" >>/etc/hosts
 echo "hostname='$HOSTNAME'" > /etc/config.d/hostname
