@@ -28,5 +28,6 @@ cp chrootShit.sh /mnt
 cp mirrorlist-arch /mnt/etc/pacman.d/mirrorlist-arch
 
 artix-chroot /mnt ./chrootShit.sh
+rm /mnt/chrootShit.sh
 
 poweroff
