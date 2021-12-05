@@ -60,7 +60,8 @@ Include = /etc/pacman.d/mirrorlist-arch" >> /etc/pacman.conf
 
 #gue and programs
 cd /home/"$username"
-pacman -Sy git sudo alacritty zsh go firefox vim chromium pcmanfm-gtk3 slock feh ttf-font-awesome ttf-opensans adobe-source-code-pro-fonts --noconfirm
+pacman -Sy archlinux-keyring
+pacman -Sy alsa pulseaudio pavucontrol git sudo alacritty zsh go firefox vim chromium pcmanfm-gtk3 slock feh ttf-font-awesome ttf-opensans adobe-source-code-pro-fonts --noconfirm
 pacman -S xdm-openrc xorg-server xf86-video-intel xorg-xbacklight --noconfirm
 
 mkdir suckless
@@ -71,12 +72,9 @@ cd ..
 
 #configurations
 mkdir .config
-chown "$username":"$username" .config
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 git clone https://github.com/SMproductive/configurations
 	#ownership
-chown "$username":"$username" configurations
-chown "$username":"$username" configurations/*
 	#suckless
 cp configurations/slstatusConfig.h suckless/slstatus/config.h
 cp configurations/dwmConfig.h suckless/dwm/config.h
@@ -88,25 +86,21 @@ make install
 cd ../..
 	#login
 ln -P configurations/xsession .xsession
-chown "$username":"$username" .xsession
 	#alacritty
 mkdir .config/alacritty
 ln -P configurations/alacritty.yml .config/alacritty/alacritty.yml
-chown "$username":"$username" .config/alacritty/alacritty.yml
 	#gtk
 cp -r configurations/gtk-3.0 .config/gtk-3.0
-chown "$username":"$username" .config/gtk-3.0/*
 	#zsh
 ln -P configurations/zshrc .zshrc
-chown "$username":"$username" .zshrc
 	#vim
 ln -P configurations/vimrc .vimrc
-chown "$username":"$username" .vimrc
 	#iptables
 iptables-restore configurations/iptables.rules
 	#vimplug
 curl -fLo /home/"$username"/.vim/autoload/plug.vim --create-dirs \
 	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+chown -hR "$username":"$username" *
 rc-update add xdm
 exit

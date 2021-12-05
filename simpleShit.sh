@@ -19,10 +19,10 @@ mount /dev/sda2 /mnt
 mkdir /mnt/efi
 mount /dev/sda1 /mnt/efi
 
-fstabgen -U /mnt >> /mnt/etc/fstab
 #installation
 basestrap /mnt base base-devel openrc elogind-openrc
 basestrap /mnt linux linux-firmware
+fstabgen -U /mnt >> /mnt/etc/fstab
 
 cp chrootShit.sh /mnt
 cp mirrorlist-arch /mnt/etc/pacman.d/mirrorlist-arch
