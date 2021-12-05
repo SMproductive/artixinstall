@@ -17,7 +17,7 @@ y | mkfs.ext4 /dev/sda2
 swapon /dev/sda3
 mount /dev/sda2 /mnt
 mkdir /mnt/efi
-mount /dev/sda1 /efi
+mount /dev/sda1 /mnt/efi
 
 fstabgen -U /mnt >> /mnt/etc/fstab
 #installation
