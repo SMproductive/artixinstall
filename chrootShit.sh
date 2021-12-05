@@ -8,7 +8,7 @@ locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
 #bootloader
-yes | pacman -S grub efibootmgr
+pacman -Sy grub efibootmgr --noconfirm
 grub-install --target=x86_64-efi --efi-directory=efi --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -17,9 +17,9 @@ HOSTNAME=anonym
 echo $HOSTNAME >/etc/hostname
 echo -e "127.0.0.1 \tlocalhost \n::1 \t\tlocalhost \n127.0.1.1 \t$HOSTNAME.localdomain $HOSTNAME" >>/etc/hosts
 echo "hostname='$HOSTNAME'" > /etc/config.d/hostname
-yes | pacman -S dhcpcd iwd-openrc
+pacman -S dhcpcd iwd-openrc --noconfirm
 
-yes | pacman -S connman-openrc
+pacman -S connman-openrc --noconfirm
 rc-update add connmand
 clear
 
@@ -58,8 +58,8 @@ Include = /etc/pacman.d/mirrorlist-arch" >> /etc/pacman.conf
 
 #gue and programs
 cd /home/"$username"
-yes | pacman -S git sudo alacritty zsh go firefox vim chromium pcmanfm-gtk3 slock feh ttf-font-awesome ttf-opensans adobe-source-code-pro-fonts
-yes | pacman -S xdm-openrc xorg-server xf86-video-intel xorg-xbacklight
+pacman -S git sudo alacritty zsh go firefox vim chromium pcmanfm-gtk3 slock feh ttf-font-awesome ttf-opensans adobe-source-code-pro-fonts --noconfirm
+pacman -S xdm-openrc xorg-server xf86-video-intel xorg-xbacklight --noconfirm
 
 mkdir suckless
 cd suckless

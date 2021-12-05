@@ -1,5 +1,5 @@
 #partitioning
-pacman -Sy parted
+yes | pacman -S parted
 parted /dev/sda mklabel gpt
 parted /dev/sda mkpart efi fat32 0 512M
 parted /dev/sda mkpart root ext4 512M 99%
