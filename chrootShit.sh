@@ -8,8 +8,8 @@ locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
 #bootloader
-pacman -Sy grub efibootmgr --noconfirm
-grub-install --target=x86_64-efi --efi-directory=efi --removable
+pacman -S grub efibootmgr --noconfirm
+grub-install --target=x86_64-efi --efi-directory=/efi --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 clear
 
@@ -60,7 +60,7 @@ Include = /etc/pacman.d/mirrorlist-arch" >> /etc/pacman.conf
 
 #gue and programs
 cd /home/"$username"
-pacman -S git sudo alacritty zsh go firefox vim chromium pcmanfm-gtk3 slock feh ttf-font-awesome ttf-opensans adobe-source-code-pro-fonts --noconfirm
+pacman -Sy git sudo alacritty zsh go firefox vim chromium pcmanfm-gtk3 slock feh ttf-font-awesome ttf-opensans adobe-source-code-pro-fonts --noconfirm
 pacman -S xdm-openrc xorg-server xf86-video-intel xorg-xbacklight --noconfirm
 
 mkdir suckless
@@ -104,6 +104,9 @@ ln -P configurations/vimrc .vimrc
 chown "$username":"$username" .vimrc
 	#iptables
 iptables-restore configurations/iptables.rules
+	#vimplug
+curl -fLo /home/"$username"/.vim/autoload/plug.vim --create-dirs \
+	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 rc-update add xdm
 exit
