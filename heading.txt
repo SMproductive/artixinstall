@@ -1,6 +1,0 @@
-This script just intends to make the installation more comfortable.
-For partitioning information or manual desktop installation check out the archwiki.org
-
-Make sure you have a backup of everything otherwise there could be files deleted!
-Each input is confirmed with enter!
-PC will shut down at the end!
