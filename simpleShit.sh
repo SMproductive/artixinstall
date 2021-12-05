@@ -1,9 +1,9 @@
 #partitioning
 pacman -S parted --noconfirm
 parted /dev/sda mklabel gpt
-ignore | parted /dev/sda mkpart efi fat32 0 512M
-ignore | parted /dev/sda mkpart root ext4 512M 99%
-ignore | parted /dev/sda mkpart swap linux-swap 99% 100%
+parted /dev/sda mkpart efi fat32 0 512M
+parted /dev/sda mkpart root ext4 512M 99%
+parted /dev/sda mkpart swap linux-swap 99% 100%
 parted /dev/sda set 1 esp on
 parted /dev/sda set 1 boot on
 parted /dev/sda set 3 swap on
