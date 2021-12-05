@@ -60,8 +60,8 @@ Include = /etc/pacman.d/mirrorlist-arch" >> /etc/pacman.conf
 
 #gue and programs
 cd /home/"$username"
-pacman -Sy archlinux-keyring
-pacman -Sy alsa pulseaudio pavucontrol git sudo alacritty zsh go firefox vim chromium pcmanfm-gtk3 slock feh ttf-font-awesome ttf-opensans adobe-source-code-pro-fonts --noconfirm
+pacman -Sy archlinux-keyring --noconfirm
+pacman -Sy alsa pulseaudio pavucontrol git sudo alacritty zsh grml-zsh-config go firefox vim chromium pcmanfm-gtk3 slock feh ttf-font-awesome ttf-opensans adobe-source-code-pro-fonts yarn dmenu papirus-icon-theme --noconfirm
 pacman -S xdm-openrc xorg-server xf86-video-intel xorg-xbacklight --noconfirm
 
 mkdir suckless
@@ -74,7 +74,6 @@ cd ..
 mkdir .config
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 git clone https://github.com/SMproductive/configurations
-	#ownership
 	#suckless
 cp configurations/slstatusConfig.h suckless/slstatus/config.h
 cp configurations/dwmConfig.h suckless/dwm/config.h
@@ -99,8 +98,16 @@ ln -P configurations/vimrc .vimrc
 iptables-restore configurations/iptables.rules
 	#vimplug
 curl -fLo /home/"$username"/.vim/autoload/plug.vim --create-dirs \
-	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	#tapping of touchpad
+echo "
+Section "InputClass"
+	Identifier "touchpad"
+	Driver "libinput"
+	MatchIsTouchpad "on"
+	Option "Tapping" "on"
+EndSection" > /etc/X11/xorg.conf.d/30-touchpad.conf
 
-chown -hR "$username":"$username" *
+chown -hR "$username":"$username" .
 rc-update add xdm
 exit
