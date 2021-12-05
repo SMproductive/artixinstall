@@ -102,4 +102,6 @@ ln -P configurations/vimrc .vimrc
 chown "$username":"$username" .vimrc
 	#iptables
 iptables-restore configurations/iptables.rules
+
+rc-update add xdm
 exit

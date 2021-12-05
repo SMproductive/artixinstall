@@ -1,4 +1,5 @@
 #partitioning
+pacman -Sy parted
 parted /dev/sda mklabel gpt
 parted /dev/sda mkpart efi fat32 0 512M
 parted /dev/sda mkpart root ext4 512M 99%
@@ -24,7 +25,7 @@ basestrap /mnt base base-devel openrc elogind-openrc
 basestrap /mnt linux linux-firmware
 
 cp chrootShit.sh /mnt
-cp mirrorlist-arch /etc/pacman.d/mirrorlist-arch
+cp mirrorlist-arch /mnt/etc/pacman.d/mirrorlist-arch
 
 artix-chroot /mnt ./chrootShit.sh
 
