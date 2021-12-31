@@ -106,6 +106,7 @@ Section "InputClass"
 	Option "Tapping" "on"
 EndSection' > /etc/X11/xorg.conf.d/30-touchpad.conf
 	#iptables
+pacman -S iptables-openrc --noconfirm
 iptables-restore configurations/iptables.rules
 /etc/init.d/iptables save
 
