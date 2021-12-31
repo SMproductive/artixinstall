@@ -61,7 +61,7 @@ Include = /etc/pacman.d/mirrorlist-arch" >> /etc/pacman.conf
 #gue and programs
 cd /home/"$username"
 pacman -Sy archlinux-keyring --noconfirm
-pacman -Sy man alsa pulseaudio pavucontrol git sudo alacritty zsh grml-zsh-config go firefox vim chromium pcmanfm-gtk3 slock feh ttf-font-awesome ttf-opensans adobe-source-code-pro-fonts yarn dmenu papirus-icon-theme --noconfirm
+pacman -Sy gopls man alsa pulseaudio pavucontrol git sudo alacritty zsh grml-zsh-config go firefox vim chromium pcmanfm-gtk3 slock feh ttf-font-awesome ttf-opensans adobe-source-code-pro-fonts yarn dmenu papirus-icon-theme --noconfirm
 pacman -S xdm-openrc xorg-server xf86-video-intel xorg-xbacklight --noconfirm
 
 mkdir suckless
